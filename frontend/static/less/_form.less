@@ -1,0 +1,34 @@
+.form {
+
+    &.with-border {
+        border: 1px solid @grey;
+        padding: 20px;
+    }
+}
+
+.form-field {
+    margin-top: 25px;
+}
+
+.field-label {
+    font-weight: bold;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=search] {
+    background: none;
+    border: none;
+    border-bottom: 2px solid @grey;
+    box-sizing: border-box;
+    padding: 10px 2px 1px 2px;
+    outline: none;
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    width: 100%;
+    transition: all 0.1s ease-in;
+
+    &:focus {
+        border-color: @blue;
+    }
+}

@@ -1,0 +1,57 @@
+import os
+
+# from huey import RedisHuey
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+# queue = RedisHuey("indexer", host="localhost", port=6379)
+
+
+class Config:
+    APP_NAME = 'Starter Kit'
+    APP_DESC = 'Basic Flask App starter kit.'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'somethingsecret'
+    REMEMBER_COOKIE_NAME = 'starter-kit-app'
+    CACHE_KEY_PREFIX = 'starter'
+    CACHE_DEFAULT_TIMEOUT = 1800
+
+    @staticmethod
+    def init_app(app):
+        pass
+
+
+class DevConfig(Config):
+    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, "verticals-dev.db")
+
+
+class TestConfig(Config):
+    DEBUG = True
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, "verticals-test.db")
+
+
+class ProdConfig(Config):
+    DEBUG = False
+    TESTING = False
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, "verticals-prod.db")
+
+
+config = {
+    'dev': DevConfig,
+    'test': TestConfig,
+    'prod': ProdConfig,
+    'default': DevConfig
+}
+
+
+class Settings:
+    MAIL_HOST = 'smtp.mandrillapp.com'
+    MAIL_PORT = 587
+    MAIL_TO = ['user@gmail.com']
+    MAIL_FROM = 'admin@gmail.com'
+    MAIL_USERNAME = 'auth@gmail.com'
+    MAIL_PASSWORD = 'MailPassword-JxxQ'
+    SQLALCHEMY_DATABASE_URI = config["default"].SQLALCHEMY_DATABASE_URI

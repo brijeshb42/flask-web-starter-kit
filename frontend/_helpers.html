@@ -1,0 +1,40 @@
+{%- macro render_field(field) -%}
+    <div class="form-field">
+        {{- field.label(class='field-label') -}}
+        <div>{{ field(**kwargs)|safe }}</div>
+        {%- if field.errors %}
+        <ul class="form-errors">
+            {%- for error in field.errors %}
+            <li class="message error">{{ error }}</li>
+            {%- endfor %}
+        </ul>
+        {%- endif %}
+    </div>
+{%- endmacro -%}
+
+{%- macro render_pagination(pagination) %}
+    {%- if pagination is not none %}
+        <div class="pagination">
+        {%- if pagination.has_prev %}
+            <a href="{{ url_for('blog.index', page=pagination.prev_num) }}" class="previous">Previous</a>
+        {%- endif %}
+            <span>{{- pagination.page -}}&nbsp;of&nbsp;{{- pagination.total -}}</span>
+        {%- if pagination.has_next %}
+            <a href="{{ url_for('blog.index', page=pagination.next_num) }}" class="next">Next</a>
+        {%- endif %}
+        </div>
+    {%- endif %}
+{%- endmacro %}
+
+{%- macro ga_tracking() %}
+{%- if config.GA_TRACKING_ID %}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '{{- config.GA_TRACKING_ID -}}', 'auto');
+  ga('send', 'pageview');
+</script>
+{% endif %}
+{% endmacro %}

@@ -1,0 +1,20 @@
+.alert {
+    border: 1px solid #111;
+    color: #111;
+    margin-bottom: 5px;
+    padding: 10px 10px;
+
+    &.info {
+        .box-type-mixin(@info-color, @info-bg, @info-border);
+    }
+    &.success {
+        .box-type-mixin(@success-color, @success-bg, @success-border);
+    }
+    &.error {
+        .box-type-mixin(@error-color, @error-bg, @error-border);
+    }
+    &.warning {
+        .box-type-mixin(@warning-color, @warning-bg, @warning-border);
+    }
+
+}

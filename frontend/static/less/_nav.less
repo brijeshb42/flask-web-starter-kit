@@ -1,0 +1,30 @@
+@nav-bg     : #222;
+
+nav {
+    ul {
+        background: @nav-bg;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        display: inline-block;
+
+        a {
+            color: lighten(@nav-bg, 20%);
+            display: block;
+            font-weight: 400;
+            padding: 15px 25px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+
+            &:visited {
+                color: #fff;
+            }
+            &:hover, &.link-active {
+                background: @blue;
+                color: #fff;
+            }
+        }
+    }
+}
