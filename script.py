@@ -3,7 +3,7 @@ import os
 from flask.ext.script import Manager, Shell
 from flask.ext.migrate import Migrate, MigrateCommand
 
-from app import app, db, AuthUser
+from backend.app import app, db, AuthUser
 
 manager = Manager(app)
 migrate = Migrate(app, db)

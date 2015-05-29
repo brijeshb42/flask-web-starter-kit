@@ -40,9 +40,9 @@ login_manager.login_view = "login"
 """App setup."""
 app = Flask(
         __name__,
-        template_folder="templates/",
+        template_folder="../templates/",
         static_url_path="/static",
-        static_folder="templates/static/")
+        static_folder="../templates/static/")
 app.wsgi_app = ProxyFix(app.wsgi_app)
 db = SQLAlchemy(app)
 app.config.from_object(config["default"])
