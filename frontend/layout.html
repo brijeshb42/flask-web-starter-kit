@@ -30,21 +30,22 @@
 </head>
 <body>
 
-<nav>
+<nav class="nav from-start">
+    <a class="brand" href="/">Starter Kit</a>
     <ul class="pull-left">
-        <li><a href="/">Home</a></li>
+        <li><a href="/" {% if request.path == url_for('index') -%} class="link-active"{%- endif -%}>Home</a></li>
         {%- if current_user.is_authenticated() -%}
         <li><a href="{{url_for('logout')}}">Logout</a></li>
         {%- else -%}
-        <li><a href="{{url_for('login')}}">Login</a></li>
+        <li><a href="{{url_for('login')}}" {% if request.path == url_for('login') -%} class="link-active"{%- endif -%}>Login</a></li>
         {%- endif -%}
     </ul>
 </nav>
 <div class="wrap grid">
 {%- block header -%}
-    <header>
+    <!-- <header class="hero">
         <h1 class="site-title">{{- config.APP_NAME -}}</h1>
-    </header>
+    </header> -->
 {%- endblock -%}
 
 {%- with messages = get_flashed_messages(with_categories=true) -%}
