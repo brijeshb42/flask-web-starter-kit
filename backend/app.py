@@ -1,4 +1,3 @@
-import os
 import logging
 import sys
 import string
@@ -18,11 +17,9 @@ from flask.ext.login import LoginManager, UserMixin, \
 
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, \
-    BooleanField, SubmitField
-from wtforms.validators import DataRequired, ValidationError, URL, \
-    Length
+    BooleanField
+from wtforms.validators import DataRequired
 
-from vomitter import DEFAULT_LOGGER as L
 from config import config
 
 
@@ -39,10 +36,10 @@ login_manager.login_view = "login"
 
 """App setup."""
 app = Flask(
-        __name__,
-        template_folder="../templates/",
-        static_url_path="/static",
-        static_folder="../templates/static/")
+    __name__,
+    template_folder="../templates/",
+    static_url_path="/static",
+    static_folder="../templates/static/")
 app.wsgi_app = ProxyFix(app.wsgi_app)
 db = SQLAlchemy(app)
 app.config.from_object(config["default"])
