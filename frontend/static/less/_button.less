@@ -2,12 +2,21 @@ button, .btn, a.btn, input[type=submit] {
     display: inline-block;
     background: #fff;
     border: 1px solid #ccc;
+    border-bottom-width: 4px;
+    border-radius: 2px;
     padding: 5px 10px;
+    transition: all 0.1s ease-in;
+
+    &:active {
+        border-color: #fff;
+    }
 
     &:hover, &.active {
-        background-color: #fff;
-        border-color: #111;
-        color: #111;
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+    &:focus {
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        outline: none;
     }
 }
 

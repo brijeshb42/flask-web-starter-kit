@@ -1,0 +1,54 @@
+@panel-success-bg       : #C8EAFF;
+@panel-info-bg      : #DBF4E7;
+@panel-error-bg     : #FFF4F4;
+@panel-warning-bg   : #FFF1D3;
+
+.panel {
+    background-color: #fff;
+    border: 1px  solid #444;
+    border-bottom-width: 5px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: #444;
+    margin: 5px;
+    padding: 20px;
+
+    header {
+        font-size: 2em;
+        font-weight: bold; 
+    }
+
+    .panel-body p {
+        margin: 5px 0;
+    }
+
+    footer {
+        border-top: 1px solid #444;
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    input[type=search] {
+        border: 1px solid lighten(#444, 20%);
+    }
+
+    &.panel-success {
+        .panel-box(@panel-success-bg, @success-bg, @success-border)
+    }
+    &.panel-info {
+        .panel-box(@panel-info-bg, @info-bg, @info-border)
+    }
+    &.panel-warning {
+        .panel-box(white, @warning-bg, @warning-border)
+    }
+    &.panel-error {
+        .panel-box(@panel-error-bg, @error-bg, @error-border)
+    }
+
+    .form-field {
+        margin: 10px 0;
+    }
+}

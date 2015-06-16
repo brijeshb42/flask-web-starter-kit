@@ -2,23 +2,41 @@
     color: @color;
     background-color: @bg;
     border: 1px solid @border;
-    transition: all 0.2s ease-in;
+    border-bottom-width: @border-bottom-width;
 }
 
 .button-type-mixin(@color, @bg, @border) {
     color: #fff;
-    background-color: lighten(@color, 10%);
-    border: 1px solid @color;
-    transition: all 0.2s ease-in;
+    background-color: @bg;
+    border: 1px solid @border;
+    border-bottom-width: @border-bottom-width;
+    transition: all 0.1s ease-in;
 
-    &:hover, &.active {
-        background-color: @bg;
-        border: 1px solid @color;
-        color: @color;
+    &:active {
+        border-color: @bg;
+    }
+
+    &:hover, &.active, &:focus {
+        box-shadow: 0 0 5px darken(@border, 70%);
     }
     &:focus {
-        background-color: @bg;
-        color: @color;
-        outline: 1px solid @color;
+        outline: none;
+    }
+}
+
+.panel-box(@bg, @color, @border) {
+    background-color: @bg;
+    color: @color;
+    border-color: @border;
+
+    footer {
+        border-top-color: @border;
+    }
+
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    input[type=search] {
+        border: 1px solid @border;
     }
 }

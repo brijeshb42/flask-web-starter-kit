@@ -20,7 +20,6 @@
     <link rel="stylesheet" type="text/css" href="/bower_components/normalize.css/normalize.css">
     <link rel="stylesheet" type="text/css" href="/bower_components/gridism/gridism.css">
     <!-- endbuild -->
-    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- build:css /static/css/style.css -->
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <!-- endbuild -->
@@ -30,7 +29,7 @@
 </head>
 <body>
 
-<nav class="nav from-start">
+<!-- <nav class="nav from-start">
     <a class="brand" href="/">Starter Kit</a>
     <ul class="pull-left">
         <li><a href="/" {% if request.path == url_for('index') -%} class="link-active"{%- endif -%}>Home</a></li>
@@ -38,6 +37,17 @@
         <li><a href="{{url_for('logout')}}">Logout</a></li>
         {%- else -%}
         <li><a href="{{url_for('login')}}" {% if request.path == url_for('login') -%} class="link-active"{%- endif -%}>Login</a></li>
+        {%- endif -%}
+    </ul>
+</nav> -->
+<nav class="nav from-start">
+    <a class="brand" href="/">Starter Kit</a>
+    <ul class="pull-left">
+        <li><a href="/">Home</a></li>
+        {%- if current_user.is_authenticated() -%}
+        <li><a href="{{url_for('logout')}}">Logout</a></li>
+        {%- else -%}
+        <li><a href="{{url_for('login')}}">Login</a></li>
         {%- endif -%}
     </ul>
 </nav>

@@ -7,6 +7,7 @@ var gulp        = require("gulp"),
     usemin      = require("gulp-usemin"),
     htmlmin     = require("gulp-htmlmin"),
     less        = require("gulp-less"),
+    jshint      = require('gulp-jshint'),
     livereload  = require('gulp-livereload');
 
 var src = {
@@ -39,6 +40,8 @@ gulp.task("copy-img", function() {
 
 gulp.task("js", function() {
     return gulp.src(src.js+"*.js")
+        .pipe(jshint())
+        .pipe(jshint.reporter("default"))
         .pipe(gulp.dest(dest.js));
 });
 
@@ -71,7 +74,7 @@ gulp.task("usemin", ["less"], function() {
         .pipe(usemin({
             css: [],
             html: [],
-            js: []
+            js: [jshint()]
         }))
         .pipe(gulp.dest(dest.html))
         .pipe(livereload());

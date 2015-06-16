@@ -1,34 +1,58 @@
 .form {
 
+    margin-top: 10px;
+    max-width: 400px;
+
     &.with-border {
         border: 1px solid @grey;
+        border-bottom-width: @border-bottom-width;
         padding: 20px;
     }
 }
 
 .form-field {
-    margin-top: 25px;
+    margin-bottom: 8px;
 }
 
 .field-label {
     font-weight: bold;
+}
+input[type=checkbox] {
+    margin-left: 10px;
 }
 
 input[type=text],
 input[type=password],
 input[type=email],
 input[type=search] {
-    background: none;
-    border: none;
-    border-bottom: 2px solid @grey;
     box-sizing: border-box;
-    padding: 10px 2px 1px 2px;
-    outline: none;
-    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    padding: 5px 10px 5px 5px;
     width: 100%;
-    transition: all 0.1s ease-in;
 
     &:focus {
-        border-color: @blue;
+        outline: 1px solid @success-bg;
+    }
+}
+
+.form-errors {
+    list-style: none;
+    margin: 10px 0 0 0;
+    padding: 0;
+
+    .message {
+        padding: 5px;
+
+        &.info {
+            .box-type-mixin(lighten(@info-color, 20%), #fff, lighten(@info-border, 20%));
+        }
+        &.success {
+            .box-type-mixin(lighten(@success-color, 20%), #fff, lighten(@success-border, 20%));
+        }
+        &.error {
+            .box-type-mixin(lighten(@error-color, 20%), #fff, lighten(@error-border, 20%));
+        }
+        &.warning {
+            .box-type-mixin(lighten(@warning-color, 20%), #fff, lighten(@warning-border, 20%));
+        }
     }
 }

@@ -3,14 +3,12 @@
 .nav {
     background: @nav-bg;
     box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    border-bottom: 5px solid #055B8E;
     overflow: auto;
     padding: 0 20px;
 
     a {
         box-sizing: content-box;
-        border-bottom-width: 4px;
-        border-bottom-style: solid;
-        border-bottom-color: transparent;
         color: #fff;
         display: inline-block;
         
@@ -21,7 +19,6 @@
         }
         &:hover, &.link-active {
             background: darken(@nav-bg, 5%);
-            border-bottom-color: darken(@nav-bg, 15%);
             color: #fff;
         }
 
