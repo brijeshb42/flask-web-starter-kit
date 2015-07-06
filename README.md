@@ -23,3 +23,4 @@
 * In separate terminal, `cd` into the `starter-kit` directory and run `gulp clean && gulp` to compile static assets and start a livereload server.
 * Then run `python script.py runserver`
 * Open `localhost:5000` in browser.
+* To add your own routes, open `backend/app.py` and start adding your own urls and responses. You can spin off your routes in new files. Just don't forget to import your files in `app.py`.
